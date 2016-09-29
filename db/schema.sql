@@ -29,11 +29,8 @@ CREATE TABLE class
 CREATE TABLE assignments
 (
 	id int NOT NULL AUTO_INCREMENT,
-<<<<<<< HEAD
-=======
 	teacher_name varchar(255) NOT NULL,
 	student_name varchar(255) NOT NULL,	
->>>>>>> edwin
 	writing varchar(20000) NOT NULL,
 	grade varchar(2) NOT NULL,
 	PRIMARY KEY (id)

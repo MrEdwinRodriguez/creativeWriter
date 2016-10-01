@@ -21,8 +21,8 @@ CREATE TABLE students
 CREATE TABLE class
 (
 	id int NOT NULL AUTO_INCREMENT,
-	teacher_name varchar(255) NOT NULL,
-	student_name varchar(255) NOT NULL,
+	teacher_id int NOT NULL,
+	student_id int NOT NULL,
 	PRIMARY KEY (id)
 );
 

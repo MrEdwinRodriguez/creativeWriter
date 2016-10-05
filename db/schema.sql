@@ -73,6 +73,8 @@ CREATE TABLE comments
 CREATE TABLE comments_has_submission
 (
 	id int NOT NULL AUTO_INCREMENT,
+	teacher_name varchar(255) NOT NULL,
+	student_name varchar(255) NOT NULL,	
 	writing varchar(20000) NOT NULL,
 	grade varchar(2) NOT NULL,
 	PRIMARY KEY (id)

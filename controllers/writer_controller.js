@@ -12,7 +12,7 @@ var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkK
 
 //get route -> index
 router.get('/', function(req,res) {
-		res.redirect('/studentlogin')
+		res.redirect('/public/login')
 });
 
 router.get('/teacherlogin', function(req,res) {
@@ -71,7 +71,7 @@ router.post('/creativewriter/teacherview', function(req, res) {
 	//takes the request object using it as input for buger.addBurger
 	var newComment = req.body.comment;
 
-INSERT INTO comments ()
+INSERT INTO comments (comments_mentor_comment)
 VALUES (newComment);
 
 });

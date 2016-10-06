@@ -29,7 +29,6 @@ router.get('/selectteacher', function(req,res) {
 });
 
 
-
 //post route -> back to index
 router.post('/creativewriter/newuser', function(req, res) {
 	//takes the request object using it as input for buger.addBurger
@@ -52,8 +51,10 @@ router.post('/creativewriter/newuser', function(req, res) {
         // [END_EXCLUDE]
       });
 
-INSERT INTO students (name,email)
-VALUES (newUserName,newUserEmail);
+// replace name from models into insertStudents
+	writer.insertStudents(['name', 'email'], [newUserName, newUserEmail], function(data){
+		res.redirect('/studentview')
+	});
 
 });
 
@@ -61,8 +62,10 @@ router.post('/creativewriter/studentview', function(req, res) {
 	//takes the request object using it as input for buger.addBurger
 	var newPost = req.body.newPost;
 
-INSERT INTO submission (student_input)
-VALUES (newPost);
+// replace name from models into submission
+	writer.submission(['name'], [newPost], function(data){
+		res.redirect('/studentview')
+	});
 
 });
 
@@ -71,8 +74,10 @@ router.post('/creativewriter/teacherview', function(req, res) {
 	//takes the request object using it as input for buger.addBurger
 	var newComment = req.body.comment;
 
-INSERT INTO comments (comments_mentor_comment)
-VALUES (newComment);
+// replace name from models into submission
+	writer.comments(['comments_mentor_comment'], [newComment], function(data){
+		res.redirect('/studentview')
+	});
 
 });
 

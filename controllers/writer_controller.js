@@ -12,11 +12,11 @@ var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkK
 
 //get route -> index
 router.get('/', function(req,res) {
-		res.redirect('/public/login')
+		res.redirect('index')
 });
 
 router.get('/teacherlogin', function(req,res) {
-		res.redirect('/teacherlogin')
+		res.redirect('../public/admin')
 });
 
 
@@ -78,13 +78,5 @@ VALUES (newComment);
 
 
 
-//put route -> back to index
-router.put('/burgers/update', function(req,res){
-	burger.update(req.body.burger_id, function(result){
-		//wrapper for orm.js that using MySQL update callback will return a log to console, render back to index with handle
-		console.log(result);
-		res.redirect('/');
-	});
-});
 
 module.exports = router;

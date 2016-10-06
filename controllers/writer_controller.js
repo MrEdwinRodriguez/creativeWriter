@@ -76,7 +76,7 @@ router.post('/creativewriter/teacherview', function(req, res) {
 
 // replace name from models into submission
 	writer.comments(['comments_mentor_comment'], [newComment], function(data){
-		res.redirect('/studentview')
+		res.redirect('/teacherview')
 	});
 
 });

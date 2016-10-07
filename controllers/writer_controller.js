@@ -97,6 +97,23 @@ router.get('/studentview', function(req,res) {
 });
 
 
+// mentor selects student
+router.get('/teacherview/studentselect', function(req,res) {
+	writer.selectSubmission(function(data){
+		var hbsObject = {writer : data}
+		console.log(hbsObject)
+		res.render('teacherview/submission', hbsObject);
+
+	writer.user('SELECT FROM user', function(err, res) {
+    if (err) throw err;
+    console.log(res);
+})
+
+	});
+});
+
+
+
 // mentor selects writing from student
 router.get('/teacherview', function(req,res) {
 	writer.selectSubmission(function(data){

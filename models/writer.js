@@ -3,12 +3,24 @@ var orm = require ('../config/orm.js')
 
 var writer = {
 
-	selectAll: function(cb) {
-		orm.selectAll('burgers', function(res){
+	selectStudent: function(cb) {
+		orm.selectStudent('students', function(res){
 			cb(res);
 		});
 	},
-	
+
+	selectComments: function(cb) {
+		orm.selectComments('comments', function(res){
+			cb(res);
+		});
+	},
+
+	selectSubmission: function(cb) {
+		orm.selectSubmission('submission', function(res){
+			cb(res);
+		});
+	},	
+
 	insertStudents: function(cols, vals, cb) {
 		orm.insertStudents('students', cols, vals, function(res){
 			cb(res);
@@ -22,7 +34,7 @@ var writer = {
 	},
 
 	comments: function(cols, vals, cb) {
-		orm.comments('comment', cols, vals, function(res){
+		orm.comments('comments', cols, vals, function(res){
 			cb(res);
 		});
 	},	

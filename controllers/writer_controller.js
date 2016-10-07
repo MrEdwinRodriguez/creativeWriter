@@ -63,7 +63,7 @@ router.post('/creativewriter/studentview', function(req, res) {
 	var newPost = req.body.newPost;
 
 // replace name from models into submission
-	writer.submission(['name'], [newPost], function(data){
+	writer.submission(['student_input'], [newPost], function(data){
 		res.redirect('/studentview')
 	});
 

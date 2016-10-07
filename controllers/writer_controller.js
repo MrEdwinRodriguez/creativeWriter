@@ -81,6 +81,37 @@ router.post('/creativewriter/teacherview', function(req, res) {
 
 });
 
+// student selects comment from mentor to read
+router.get('/studentview', function(req,res) {
+	writer.selectComment(function(data){
+		var hbsObject = {writer : data}
+		console.log(hbsObject)
+		res.render('studentview/comments', hbsObject);
+
+	writer.comments('SELECT FROM comments', function(err, res) {
+    if (err) throw err;
+    console.log(res);
+})
+
+	});
+});
+
+
+// mentor selects writing from student
+router.get('/teacherview', function(req,res) {
+	writer.selectSubmission(function(data){
+		var hbsObject = {writer : data}
+		console.log(hbsObject)
+		res.render('teacherview/submission', hbsObject);
+
+	writer.submission('SELECT FROM submission', function(err, res) {
+    if (err) throw err;
+    console.log(res);
+})
+
+	});
+});
+
 
 
 

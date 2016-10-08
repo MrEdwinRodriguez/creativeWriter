@@ -12,7 +12,7 @@ var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkK
 
 //get route -> index
 router.get('/', function(req,res) {
-		res.redirect('index')
+		res.redirect('/admin')
 });
 
 router.get('/mentorlogin', function(req,res) {

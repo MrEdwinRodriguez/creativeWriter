@@ -12,27 +12,27 @@ var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkK
 
 //get route -> index
 router.get('/', function(req,res) {
-		res.redirect('/admin')
+		res.redirect('/')
 });
 
 router.get('/mentorlogin', function(req,res) {
-		res.redirect('admin')
+		res.redirect('/admin')
 });
 
 router.get('/studentlogin', function(req,res) {
-		res.redirect('login')
+		res.redirect('/login')
 });
 
 router.get('/newstudent', function(req,res) {
-		res.redirect('signup')
+		res.redirect('/signup')
 });
 
 router.get('/studentview', function(req,res) {
-		res.redirect('paragraph')
+		res.redirect('/paragraph')
 });
 
 router.get('/mentorview', function(req,res) {
-		res.redirect('mentor')
+		res.redirect('/mentor')
 });
 
 

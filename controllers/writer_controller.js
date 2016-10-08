@@ -15,8 +15,24 @@ router.get('/', function(req,res) {
 		res.redirect('index')
 });
 
-router.get('/teacherlogin', function(req,res) {
-		res.redirect('../public/admin')
+router.get('/mentorlogin', function(req,res) {
+		res.redirect('admin')
+});
+
+router.get('/studentlogin', function(req,res) {
+		res.redirect('login')
+});
+
+router.get('/newstudent', function(req,res) {
+		res.redirect('signup')
+});
+
+router.get('/studentview', function(req,res) {
+		res.redirect('paragraph')
+});
+
+router.get('/mentorview', function(req,res) {
+		res.redirect('mentor')
 });
 
 
@@ -88,7 +104,7 @@ router.get('/studentview', function(req,res) {
 		console.log(hbsObject)
 		res.render('studentview/comments', hbsObject);
 
-	writer.comments('SELECT FROM comments', function(err, res) {
+	writer.selectComments('SELECT FROM comments', function(err, res) {
     if (err) throw err;
     console.log(res);
 })
@@ -104,7 +120,7 @@ router.get('/teacherview/studentselect', function(req,res) {
 		console.log(hbsObject)
 		res.render('teacherview/submission', hbsObject);
 
-	writer.user('SELECT FROM user', function(err, res) {
+	writer.selectStudent('SELECT FROM user', function(err, res) {
     if (err) throw err;
     console.log(res);
 })
@@ -121,7 +137,7 @@ router.get('/teacherview', function(req,res) {
 		console.log(hbsObject)
 		res.render('teacherview/submission', hbsObject);
 
-	writer.submission('SELECT FROM submission', function(err, res) {
+	writer.selectSubmission('SELECT FROM submission', function(err, res) {
     if (err) throw err;
     console.log(res);
 })

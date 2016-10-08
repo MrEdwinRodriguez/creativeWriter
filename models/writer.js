@@ -21,20 +21,20 @@ var writer = {
 		});
 	},	
 
-	insertStudents: function(cols, vals, cb) {
-		orm.insertStudents('students', cols, vals, function(res){
+	insertStudents: function(name, email, cb) {
+		orm.insertStudents('students', name, email, function(res){
 			cb(res);
 		});
 	},
 
-	submission: function(cols, vals, cb) {
-		orm.submission('submission', cols, vals, function(res){
+	submission: function(writing, cb) {
+		orm.submission('submission', writing, function(res){
 			cb(res);
 		});
 	},
 
-	comments: function(cols, vals, cb) {
-		orm.comments('comments', cols, vals, function(res){
+	comments: function(mentor_comment, students_id, submissin_id, cb) {
+		orm.comments('comments', mentor_comment, students_id, submissin_id,  function(res){
 			cb(res);
 		});
 	},	

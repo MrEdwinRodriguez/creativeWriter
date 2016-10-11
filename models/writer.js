@@ -22,21 +22,15 @@ var writer = {
 	},	
 
 	insertStudents: function(name, email, cb) {
-		orm.insertStudents('students', name, email, function(res){
-			cb(res);
-		});
+		orm.insertStudents('students', ['name', 'email'], [name, email], cb);	
 	},
 
 	submission: function(writing, cb) {
-		orm.submission('submission', writing, function(res){
-			cb(res);
-		});
+		orm.submission('submission', ['student_input'], [writing], cb);	
 	},
 
-	comments: function(mentor_comment, students_id, submissin_id, cb) {
-		orm.comments('comments', mentor_comment, students_id, submissin_id,  function(res){
-			cb(res);
-		});
+	comments: function(mentor, student, submission, cb) {
+		orm.comments('comments', ['mentor_id', 'submission_id', 'mentor_input'], [mentor, student, submission], cb);	
 	}	
 
 }

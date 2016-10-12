@@ -21,16 +21,16 @@ var writer = {
 		});
 	},	
 
-	insertStudents: function(name, email, cb) {
-		orm.insertStudents('students', ['name', 'email'], [name, email], cb);	
+	insertUsers: function(name, email, type, cb) {
+		orm.insertUsers('users', ['name', 'email', 'type'], [name, email, type], cb);	
 	},
 
-	submission: function(writing, cb) {
-		orm.submission('submission', ['student_input'], [writing], cb);	
+	submission: function(student, text, cb) {
+		orm.submission('submission', ['student_id', 'student_input'], [student, text], cb);	
 	},
 
-	comments: function(mentor, student, submission, cb) {
-		orm.comments('comments', ['mentor_id', 'submission_id', 'mentor_input'], [mentor, student, submission], cb);	
+	comments: function(mentor, submission, comment, cb) {
+		orm.comments('comments', ['mentor_id', 'submission_id', 'mentor_input'], [mentor, submission, comment], cb);	
 	}	
 
 }

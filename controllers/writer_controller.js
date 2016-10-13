@@ -12,11 +12,27 @@ var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkK
 
 //get route -> index
 router.get('/', function(req,res) {
-		res.redirect('/studentlogin')
+		res.redirect('/')
 });
 
-router.get('/teacherlogin', function(req,res) {
-		res.redirect('/teacherlogin')
+router.get('/mentorlogin', function(req,res) {
+		res.redirect('/admin')
+});
+
+router.get('/studentlogin', function(req,res) {
+		res.redirect('/login')
+});
+
+router.get('/newstudent', function(req,res) {
+		res.redirect('/signup')
+});
+
+router.get('/studentview', function(req,res) {
+		res.redirect('/paragraph')
+});
+
+router.get('/mentorview', function(req,res) {
+		res.redirect('/mentor')
 });
 
 
@@ -27,7 +43,6 @@ router.get('/selectteacher', function(req,res) {
 		res.redirect('/studentview');
 	});
 });
-
 
 
 //post route -> back to index
@@ -52,8 +67,10 @@ router.post('/creativewriter/newuser', function(req, res) {
         // [END_EXCLUDE]
       });
 
-INSERT INTO students (name,email)
-VALUES (newUserName,newUserEmail);
+// replace name from models into insertStudents
+	writer.insertStudents(['name', 'email'], [newUserName, newUserEmail], function(data){
+		res.redirect('/studentview')
+	});
 
 });
 
@@ -61,8 +78,10 @@ router.post('/creativewriter/studentview', function(req, res) {
 	//takes the request object using it as input for buger.addBurger
 	var newPost = req.body.newPost;
 
-INSERT INTO submission (student_input)
-VALUES (newPost);
+// replace name from models into submission
+	writer.submission(['student_input'], [newPost], function(data){
+		res.redirect('/studentview')
+	});
 
 });
 
@@ -71,20 +90,62 @@ router.post('/creativewriter/teacherview', function(req, res) {
 	//takes the request object using it as input for buger.addBurger
 	var newComment = req.body.comment;
 
-INSERT INTO comments ()
-VALUES (newComment);
+// replace name from models into submission
+	writer.comments(['comments_mentor_comment'], [newComment], function(data){
+		res.redirect('/teacherview')
+	});
 
 });
 
+// student selects comment from mentor to read
+router.get('/studentview', function(req,res) {
+	writer.selectComment(function(data){
+		var hbsObject = {writer : data}
+		console.log(hbsObject)
+		res.render('studentview/comments', hbsObject);
 
+	writer.selectComments('SELECT FROM comments', function(err, res) {
+    if (err) throw err;
+    console.log(res);
+})
 
-//put route -> back to index
-router.put('/burgers/update', function(req,res){
-	burger.update(req.body.burger_id, function(result){
-		//wrapper for orm.js that using MySQL update callback will return a log to console, render back to index with handle
-		console.log(result);
-		res.redirect('/');
 	});
 });
+
+
+// mentor selects student
+router.get('/teacherview/studentselect', function(req,res) {
+	writer.selectSubmission(function(data){
+		var hbsObject = {writer : data}
+		console.log(hbsObject)
+		res.render('teacherview/submission', hbsObject);
+
+	writer.selectStudent('SELECT FROM user', function(err, res) {
+    if (err) throw err;
+    console.log(res);
+})
+
+	});
+});
+
+
+
+// mentor selects writing from student
+router.get('/teacherview', function(req,res) {
+	writer.selectSubmission(function(data){
+		var hbsObject = {writer : data}
+		console.log(hbsObject)
+		res.render('teacherview/submission', hbsObject);
+
+	writer.selectSubmission('SELECT FROM submission', function(err, res) {
+    if (err) throw err;
+    console.log(res);
+})
+
+	});
+});
+
+
+
 
 module.exports = router;

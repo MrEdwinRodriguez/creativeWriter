@@ -20,7 +20,7 @@
 <body>
 
   <div id="logo">
-    <img class="block" src="assets/img/logo.png">
+    <!-- <img class="block" src="assets/img/logo.png"> -->
   </div>
 
         <div class="form-group">
@@ -39,14 +39,19 @@
     <div class="para">
         <div class="form-group">
             <label for="exampleTextarea"></label>
-            <textarea class="form-control" id="newPost" placeholder="Create something great here!" rows="10"></textarea>
+            <textarea class="form-control" id="newPost" placeholder="Write something great here!" rows="10"></textarea>
+        </div>
+    </div>
+
+    <div class="genre">
+        <div class="form-group">
+            <div class="genre-control" id="genre">Image goes here</div>
         </div>
     </div>
 
     <div class="submit">
         <button type="submit" class="btn btn-primary">Submit</button>
-
-    </div>
+      </div>
 <hr>
     <div class="panel panel-default">
         <div class="panel-body text-center">
@@ -171,6 +176,57 @@
     .timer-box>span {
         position: relative;
     }
+
+    .genre{
+      background-color: #ffffff;
+      width: 200px;
+      height: 200px;
+      float: right;
+      margin-top: -250px;
+      margin-right: 20px;
+      position: relative;
+    }
+
+    @media only screen and (max-width: 500px) {
+
+      #exampleSelect1{
+        width: 200px;
+        margin-right: 50%;
+        margin-left: 50%;
+        margin: auto;
+        margin-top: -30px;
+
+      }
+
+      #startButton{
+        background-color: #a53831;
+        border-style: none;
+        margin-bottom: 10px;
+      }
+
+      .para {
+          width: 300px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+
+      .form-control {
+
+          font-size: 9px;
+          width: 300px;
+      }
+
+      .genre{
+        background-color: #ffffff;
+        width: 100px;
+        height: 100px;
+        margin: 50%;
+        position: absolute;
+      }
+
+
+    }
+
 </style>
 
 </html>

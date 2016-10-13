@@ -51,6 +51,7 @@ router.post('/creativewriter/newuser', function(req, res) {
 	var newUserName = req.body.name;
 	var newUserEmail = req.body.email;
 	var newUserPassword = req.body.password;
+	var newUserType = req.body.type;
 
 	
 
@@ -70,9 +71,9 @@ router.post('/creativewriter/newuser', function(req, res) {
       });
 
 // replace name from models into insertStudents
-	// writer.insertStudents(['name', 'email'], [newUserName, newUserEmail], function(data){
-	// 	res.redirect('/studentview')
-	// });
+	writer.insertUsers('users', ['name', 'email', 'password', 'type'], [newUserName, newUserEmail, newUserPassword, newUserType], function(data){
+		res.redirect('/studentview')
+	});
 
 });
 

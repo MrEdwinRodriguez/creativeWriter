@@ -13,12 +13,12 @@ var orm = {
     create: function(table, cols, vals, cb) {
       var queryString = 'INSERT INTO ' + table;
 
-      queryString = queryString + ' (';
-      queryString = queryString + cols.toString();
-      queryString = queryString + ') ';
-      queryString = queryString + 'VALUES (';
-      queryString = queryString + printQuestionMarks(vals.length);
-      queryString = queryString + ') ';
+      queryString += queryString + ' (';
+      queryString += queryString + cols.toString();
+      queryString += queryString + ') ';
+      queryString += queryString + 'VALUES (';
+      queryString += queryString + printQuestionMarks(vals.length);
+      queryString += queryString + ') ';
 
       console.log(queryString)
 

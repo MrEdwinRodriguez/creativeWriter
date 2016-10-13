@@ -1,5 +1,16 @@
 var connection = require('./connection.js');
 
+
+function printQuestionMarks(num){
+  var arr = [];
+
+  for (var i=0; i<num; i++){
+    arr.push('?')
+  }
+
+  return arr.toString();
+}
+
 var orm = {
     all: function(tableInput, cb) {
         var queryString = 'SELECT * FROM ' + tableInput + ';';
@@ -29,7 +40,7 @@ var orm = {
     },
     //objColVals would be the columns and values that you want to update
     //an example of objColVals would be {name: panther, sleepy: true}
-    update: function(table, objColVals, condition, cb) {
+    update: function(table, ColVals, condition, cb) {
       var queryString = 'UPDATE ' + table;
 
       queryString = queryString + ' SET ';

@@ -1,18 +1,18 @@
 use creativewriter_db;
 
-INSERT INTO teachers (name,email),
-VALUES ('Ms. Parker','Hey_Ms_Parker@hotmail.com');
-VALUES ('Ms. Jackson','Sorry_Ms_Jackson@hotmail.com');
-VALUES ('Mr. Peter' , 'PeteyPablo@UCF.com')
-
-
-INSERT INTO students(name,email),
+INSERT INTO users (teacher_id, student_id, name),
 VALUES ('Edwin Rodriguez','MrPimp@hotmail.com');
 VALUES ('Jason Perry','DaTruth@gmail.com');
 VALUES ('Josh Miller','Slapmamas@aol.com');
 
+ -- 1- Category - Write about going green or an environmental concern you have.
+ -- 2- Category - Visit your favorite Social Networking website (ie: Facebook, Pinterest, Google, Twitter, etc.) and write a about a post you see there.
+ -- 3- Category - Pick a state or country you’ve never visited. Write about why you would or would not like to visit that place.
 
-INSERT INTO class (teacher_id, student_id, name)
+ INSERT INTO submission (student_input),
+ VALUES (student_info);
+ VALUES (student_info);
+ VALUES (student_info);
 
 VALUES
 (1,1,'Writing 101'),

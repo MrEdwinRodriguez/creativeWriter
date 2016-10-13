@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>WRITERS BLOCK</title>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Bevan|Julius+Sans+One|Pacifico|Poiret+One" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="assets/js/pomodoro-timer.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div id="logo">
+        <!-- <img class="block" src="assets/img/logo.png"> -->
+    </div>
+
+    <div class="form-group">
+        <label for="exampleSelect1"></label>
+        <select class="form-control" id="exampleSelect1">
+        <option>select your student</option>
+
+      </select>
+    </div>
+
+    <div class="submit">
+        <button id="pull" type="submit" class="btn btn-primary">Pull Submission</button>
+
+    </div>
+
+    <div class="form-group">
+        <label for="exampleSelect1"></label>
+        <select class="form-control" id="grades">
+        <option>select grade</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+        <option>F</option>
+      </select>
+    </div>
+
+    <div class="submit">
+        <button id="grade" type="submit" class="btn btn-primary">Submit Grade</button>
+
+    </div>
+
+
+    <div class="para">
+        <div class="form-group">
+            <label for="exampleTextarea"></label>
+            <textarea class="form-control" id="newPost" placeholder="" rows="15"></textarea>
+        </div>
+    </div>
+
+    <hr>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="assets/js/pomodoro-timer.js"></script>
+
+
+</script>
+
+</body>
+
+<style>
+    body {
+        font-family: Arial;
+        background-color: #baa586;
+        padding: 50px;
+    }
+
+    hr {
+        border-color: #ffffff;
+    }
+
+    #logo {}
+
+    #exampleSelect1 {
+        width: 400px;
+        margin: auto;
+        margin-top: -30px;
+    }
+
+    #submitButton {
+        background-color: #a53831;
+        border-style: none;
+        margin-bottom: 10px;
+
+    }
+
+    #pauseButton {
+        background-color: #a53831;
+        border-style: none;
+    }
+
+    #grades {
+      width: 150px;
+      margin: auto;
+    }
+
+    .block {
+        height: 250px;
+        margin-top: -100px;
+        margin-bottom: -90px;
+    }
+
+    .submit {
+        width: 250px;
+        background-color: green;
+        margin: auto;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    .panel {
+        width: 400px;
+        height: 200px;
+        border-style: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .panel-body {
+        background-color: #baa586;
+        width: 400px;
+        height: 200px;
+    }
+
+    .para {
+        width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-control {
+        font-size: 18px;
+        width: 700px;
+    }
+
+    .timer-time {
+        line-height: 1em;
+        font-size: 6em;
+    }
+
+    .timer-container {
+        height: 1em;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .timer-box {
+        height: 1em;
+        margin: auto;
+        position: relative;
+    }
+
+    .timer-box>span {
+        position: relative;
+    }
+
+    .genre {
+        background-color: #ffffff;
+        width: 200px;
+        height: 200px;
+        float: right;
+        margin-top: -250px;
+        margin-right: 20px;
+        position: relative;
+    }
+
+    @media only screen and (max-width: 500px) {
+        #exampleSelect1 {
+            width: 200px;
+            margin-right: 50%;
+            margin-left: 50%;
+            margin: auto;
+            margin-top: -30px;
+        }
+        #startButton {
+            background-color: #a53831;
+            border-style: none;
+            margin-bottom: 10px;
+        }
+        .para {
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form-control {
+            font-size: 9px;
+            width: 300px;
+        }
+        .genre {
+            background-color: #ffffff;
+            width: 100px;
+            height: 100px;
+            margin: 50%;
+            position: absolute;
+        }
+    }
+</style>
+
+</html>

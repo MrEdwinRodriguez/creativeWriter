@@ -1,37 +1,27 @@
 CREATE DATABASE creativewriter_db;
 USE creativewriter_db;
 
-
-CREATE TABLE teachers
+CREATE TABLE users
 (
 	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	email varchar(255) NOT NULL,
+	name varchar(20) NOT NULL,
+	email varchar (50) NOT NULL,
+	type varchar (10) NOT NULL,
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE students
+CREATE TABLE submission
 (
 	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	email varchar(255) NOT NULL,
+	user_id INT NOT NULL,
+	user_input(20000) NOT NULL,
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE class
+CREATE TABLE comments
 (
 	id int NOT NULL AUTO_INCREMENT,
-	teacher_id int NOT NULL,
-	student_id int NOT NULL,
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE assignments
-(
-	id int NOT NULL AUTO_INCREMENT,
-	teacher_name varchar(255) NOT NULL,
-	student_name varchar(255) NOT NULL,	
-	writing varchar(20000) NOT NULL,
-	grade varchar(2) NOT NULL,
+	submission_id INT  NOT NULL,
+	comments varchar (10000)
 	PRIMARY KEY (id)
 );

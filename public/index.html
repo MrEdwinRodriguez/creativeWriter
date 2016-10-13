@@ -11,15 +11,24 @@
 </head>
 
 <body>
+    <div id="logo">
+
+    </div>
+
     <div class="buttons">
 
     <a class="btn btn-primary btn-large btn-block" href="login.html">Student Login</a>
     <a class="btn btn-primary btn-large btn-block" href="admin.html">Teacher Login</a>
-    <a class="btn btn-primary btn-large btn-block" href="signup.html">Sign Up</a>
-
-
-
+    <a class="btn btn-primary btn-large btn-block" id="signUp" href="signup.html">Sign Up</a>
     </div>
+
+
+    <div id="footer">
+    <footer class="site-footer">
+      Writers Block &copy 2016
+    </footer>
+  </div>
+
 
 </body>
 
@@ -43,6 +52,10 @@
 
     }
 
+    #signUp{
+      background-color: #286090;
+    }
+
     .btn {
         border: 2px solid transparent;
         background: #a53831;
@@ -61,11 +74,46 @@
         margin-bottom: 10px;
     }
 
-    @media only screen and (max-width: 500px) {
-    body {
-        background-color: lightblue;
+    .site-footer{
+      margin-right: auto;
+      margin-left: auto;
+      color: #ffffff;
     }
+
+    #footer{
+      width: auto;
+      height: 20px;
+      text-align: center;
+      min-height: 100%;
+    }
+
+@media only screen and (max-width: 500px) {
+
+  html{background: url(assets/img/bg2.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  }
+
+  body{
+    background: none;
+  }
+
+  .btn{
+    width: 80%;
+  }
+
+  #logo{
+    max-width: 70px;
+    max-height: 50px;
+
+  }
+
 }
+
+
 
 </style>
 <html>

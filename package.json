@@ -8,6 +8,7 @@
     "express": "^4.13.4",
     "firebase": "^3.4.1",
     "method-override": "^2.3.6",
+    "multer": "^1.2.0",
     "mysql": "^2.10.2",
     "sequelize": "^3.23.0"
   },

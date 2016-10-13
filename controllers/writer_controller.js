@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 var writer = require('../models/writer.js');
 var firebase = require('firebase');
 var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkKf3s",
@@ -9,10 +10,9 @@ var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkK
     messagingSenderId: "1038064048502"});
 
 
-
 //get route -> index
 router.get('/', function(req,res) {
-		res.redirect('/')
+		res.sendFile(path.join(__dirname,'../public/index.html'));
 });
 
 router.get('/mentorlogin', function(req,res) {
@@ -37,9 +37,8 @@ router.get('/mentorview', function(req,res) {
 
 
 router.get('/selectteacher', function(req,res) {
-	//express callback response by calling burger.selectAllBurger
+	
 	writer.selectTeacher(function(teacher){
-		//wrapper for orm.js that using MySQL query callback will return burger_data, render to index with handlebar
 		res.redirect('/studentview');
 	});
 });
@@ -48,9 +47,12 @@ router.get('/selectteacher', function(req,res) {
 //post route -> back to index
 router.post('/creativewriter/newuser', function(req, res) {
 	//takes the request object using it as input for buger.addBurger
+	console.log(req.body)
 	var newUserName = req.body.name;
 	var newUserEmail = req.body.email;
 	var newUserPassword = req.body.password;
+
+	
 
 	 firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
         // Handle Errors here.
@@ -68,9 +70,9 @@ router.post('/creativewriter/newuser', function(req, res) {
       });
 
 // replace name from models into insertStudents
-	writer.insertStudents(['name', 'email'], [newUserName, newUserEmail], function(data){
-		res.redirect('/studentview')
-	});
+	// writer.insertStudents(['name', 'email'], [newUserName, newUserEmail], function(data){
+	// 	res.redirect('/studentview')
+	// });
 
 });
 

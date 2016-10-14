@@ -27,28 +27,28 @@
 
                 <form  class="login-form" method="post" action="/creativewriter/newuser">
                     <div class="control-group">
-                        <input type="text" class="login-field" value="" placeholder="first & last name" id="login-name" name='name'>
+                        <input type="text" class="login-field" value="" placeholder="first & last name" id="login-name" name='name' required>
                         <label class="login-field-icon fui-user" for="login-name"></label>
                     </div>
 
                     <div class="control-group">
 
-                        <input type="email" class="login-field" value="" placeholder="email" id="login-email" name='email'>
+                        <input type="email" class="login-field" value="" placeholder="email" id="login-email" name='email' required>
                         <label class="login-field-icon fui-lock" for="login-email" ></label>
 
                     </div>
 
                     <div class="control-group">
-                        <input type="password" class="login-field" value="" placeholder="password" id="login-pass" name='password'>
+                        <input type="password" class="login-field" value="" placeholder="password" id="login-pass" name='password' required>
                         <label class="login-field-icon fui-lock" for="login-pass" ></label>
                     </div>
 
 
                         <label class="radio-inline" id="teacherRadio">
-                          <input type="radio" name="who">Teacher
+                          <input type="radio" name="who" required>Teacher
                         </label>
                         <label class="radio-inline" id="studentRadio">
-                          <input type="radio" name="who">Student
+                          <input type="radio" name="who" required>Student
                         </label>
                     <br>
                     <br>

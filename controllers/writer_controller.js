@@ -84,6 +84,45 @@ router.post('/creativewriter/newuser', function(req, res) {
 
 });
 
+router.post('/creativewriter/signin', function(req, res) {
+	//takes the request object using it as input for buger.addBurger
+	console.log(req.body)
+	var newUserName = req.body.name;
+	var newUserEmail = req.body.email;
+	var newUserPassword = req.body.password;
+	var newUserType = req.body.who;
+
+	
+
+	 firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+
+
+
+			
+        if (errorCode == 'auth/weak-password') {
+          console.log('The password is too weak.');
+        } else {
+          console.log(errorMessage);
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+
+
+			var colName = ['name', 'email', 'type'];
+			var colVal = [newUserName, newUserEmail, newUserType];
+
+			writer.insertInto('users', colName, colVal, function(data){
+			res.redirect('/studentview')
+				});
+
+
+});
+
 router.post('/creativewriter/studentview', function(req, res) {
 	//takes the request object using it as input for buger.addBurger
 	var newPost = req.body.newPost;

@@ -1,6 +1,6 @@
 # Writer's Block :pencil2:
 
-Break through your *Writer's Block* and improve your creative writing skills.
+### Break through your *Writer's Block* and improve your creative writing skills.
 
 To begin, you'll be provided with an image as a writing prompt and given only 20 minutes to
 develop a story of your choosing. This time range has been scientifically proven

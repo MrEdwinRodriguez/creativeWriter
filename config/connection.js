@@ -9,8 +9,8 @@ else{
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'createivewriter_DB'
+    password: 'sigma101',
+    database: 'creativewriter_db'
 })
 }
 

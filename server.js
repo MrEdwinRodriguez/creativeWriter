@@ -9,12 +9,14 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mysql = require('mysql');
 
+var multer = require('multer');
+
 // ==============================================================================
-// EXPRESS CONFIGURATION
-// This sets up the basic properties for our express server
+/// This sets up the basic properties for our express server
 // ==============================================================================
 
 var app = express(); // Tells node that we are creating an "express" server
+
 var PORT = process.env.PORT || 8080; // Sets an initial port. We'll use this later in our listener
 
 // BodyParser makes it easy for our server to interpret data sent to it.
@@ -27,6 +29,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
+app.use(multer().any());
+
 
 // ================================================================================
 // ROUTER
@@ -36,6 +40,9 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 // require('./routes/api-routes.js')(app);
 // require('.routes/html-routes.js')(app);
+var writer = require('./controllers/writer_controller');
+app.use('/', writer);
+
 
 // ==============================================================================
 // LISTENER
@@ -45,3 +52,5 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.listen(PORT, function() {
 	console.log("This mother fucker is listening on PORT: " + PORT);
 });
+
+

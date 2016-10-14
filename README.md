@@ -1,4 +1,4 @@
-# Writer's Block :pencil2:
+:pencil2: # Writer's Block :pencil2:
 
 Break through your *Writer's Block* and improve your creative writing skills.
 

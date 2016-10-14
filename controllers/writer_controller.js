@@ -166,20 +166,17 @@ router.post('/creativewriter/admin', function(req, res) {
 // insert comments
 router.post('/creativewriter/paragraph', function(req, res) {
 
-	
+	var newUserName = 1;
 	var newPost = req.body.newPost;
 	console.log(newPost)
-	console.log(newUserEmail)
 
 
-			
+			var colName = ['user_id', 'user_input'];
+			var colVal = [newUserName, newPost];
 
-			// var colName = ['user_id', 'user_input'];
-			// var colVal = [newUserName, newPost];
-
-			// writer.insertInto('users', colName, colVal, function(data){
-			// res.redirect('/studentview')
-			// 	});
+			writer.insertInto('submission', colName, colVal, function(data){
+			res.redirect('/studentview')
+				});
 
 
 });

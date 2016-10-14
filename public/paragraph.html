@@ -39,7 +39,9 @@
     <div class="para">
         <div class="form-group">
             <label for="exampleTextarea"></label>
-            <textarea class="form-control" id="newPost" placeholder="Write something great here!" rows="10"></textarea>
+
+            <form method="post" action="/creativewriter/paragraph">
+            <textarea class="form-control" id="newPost" placeholder="Write something great here!" rows="10" name='newPost'></textarea>
         </div>
     </div>
 
@@ -54,6 +56,7 @@
     <div class="submit">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
+      </form>
 <hr>
     <div class="panel panel-default">
         <div class="panel-body text-center">

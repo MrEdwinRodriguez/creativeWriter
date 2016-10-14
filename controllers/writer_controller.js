@@ -10,6 +10,8 @@ var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkK
     messagingSenderId: "1038064048502"});
 
 
+var newUserEmail;
+
 //get route -> index
 router.get('/', function(req,res) {
 		res.sendFile(path.join(__dirname,'../public/index.html'));
@@ -31,22 +33,17 @@ router.get('/studentview', function(req,res) {
 		res.sendFile(path.join(__dirname,'../public/paragraph.html'));
 });
 
-router.get('/mentorview', function(req,res) {
-		res.redirect('/mentor')
+router.get('/mentor', function(req,res) {
+		res.sendFile(path.join(__dirname,'../public/teacher.html'));
 });
 
 
-router.get('/selectteacher', function(req,res) {
-	
-	writer.selectTeacher(function(teacher){
-		res.redirect('/studentview');
-	});
-});
 
 
-//post route -> back to index
+
+//new user created
 router.post('/creativewriter/newuser', function(req, res) {
-	//takes the request object using it as input for buger.addBurger
+
 	console.log(req.body)
 	var newUserName = req.body.name;
 	var newUserEmail = req.body.email;
@@ -84,8 +81,10 @@ router.post('/creativewriter/newuser', function(req, res) {
 
 });
 
+
+// user signin
 router.post('/creativewriter/signin', function(req, res) {
-	//takes the request object using it as input for buger.addBurger
+	
 	console.log(req.body)
 	var newUserName = req.body.name;
 	var newUserEmail = req.body.email;
@@ -122,6 +121,75 @@ router.post('/creativewriter/signin', function(req, res) {
 
 
 });
+
+router.post('/creativewriter/admin', function(req, res) {
+	
+	console.log(req.body)
+	var newUserName = req.body.name;
+	var newUserEmail = req.body.email;
+	var newUserPassword = req.body.password;
+	var newUserType = req.body.who;
+
+	
+
+	 firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+
+
+
+			
+        if (errorCode == 'auth/weak-password') {
+          console.log('The password is too weak.');
+        } else {
+          console.log(errorMessage);
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+
+
+			var colName = ['name', 'email', 'type'];
+			var colVal = [newUserName, newUserEmail, newUserType];
+
+			writer.insertInto('users', colName, colVal, function(data){
+			res.redirect('/mentor')
+				});
+
+
+});
+
+
+
+// insert comments
+router.post('/creativewriter/paragraph', function(req, res) {
+
+	
+	var newPost = req.body.newPost;
+	console.log(newPost)
+	console.log(newUserEmail)
+
+
+			
+
+			// var colName = ['user_id', 'user_input'];
+			// var colVal = [newUserName, newPost];
+
+			// writer.insertInto('users', colName, colVal, function(data){
+			// res.redirect('/studentview')
+			// 	});
+
+
+});
+
+
+
+
+
+
+
 
 router.post('/creativewriter/studentview', function(req, res) {
 	//takes the request object using it as input for buger.addBurger

@@ -1,9 +1,6 @@
 # Writer's Block :pencil2:
 
-![Image of Writer's Block logo]
-(https://github.com/MrEdwinRodriguez/creativeWriter/blob/master/public/assets/img/logo.png)
-
-Break through your _*Writer's Block*_ and improve your creative writing skills.
+Break through your *Writer's Block* and improve your creative writing skills.
 
 To begin, you'll be provided with an image as a writing prompt and given only 20 minutes to
 develop a story of your choosing. This time range has been scientifically proven
@@ -16,3 +13,7 @@ preparing you for multi-genre projects that embrace academic thinking.
 
 *Writer's Block* is free to try for seven days, and only $100 a month on a
 subscription.
+
+
+![Image of Writer's Block logo]
+(https://github.com/MrEdwinRodriguez/creativeWriter/blob/master/public/assets/img/logo.png)

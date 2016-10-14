@@ -15,17 +15,17 @@ var writer = {
 		});
 	},	
 
-	insertUsers: function(name, email, type, cb) {
-		orm.create('users', ['name', 'email', 'type'], [name, email, type], cb);	
+	insertInto: function(table, col , val, cb) {
+		orm.create(table, col, val, cb);	
 	},
 
-	insertSubmission: function(student, text, cb) {
-		orm.create('submission', ['user_id', 'user_input'], [student, text], cb);	
-	},
+	// insertSubmission: function(student, text, cb) {
+	// 	orm.create('submission', ['user_id', 'user_input'], [student, text], cb);	
+	// },
 
-	insertComments: function(mentor, submission, comment, cb) {
-		orm.create('comments', ['user_id', 'submission_id', 'comments'], [mentor, submission, comment], cb);	
-	}	
+	// insertComments: function(mentor, submission, comment, cb) {
+	// 	orm.create('comments', ['user_id', 'submission_id', 'comments'], [mentor, submission, comment], cb);	
+	// }	
 
 }
 

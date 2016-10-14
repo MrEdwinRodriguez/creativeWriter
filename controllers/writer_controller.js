@@ -28,7 +28,7 @@ router.get('/newstudent', function(req,res) {
 });
 
 router.get('/studentview', function(req,res) {
-		res.redirect('/paragraph')
+		res.sendFile(path.join(__dirname,'../public/paragraph.html'));
 });
 
 router.get('/mentorview', function(req,res) {
@@ -51,7 +51,7 @@ router.post('/creativewriter/newuser', function(req, res) {
 	var newUserName = req.body.name;
 	var newUserEmail = req.body.email;
 	var newUserPassword = req.body.password;
-	var newUserType = req.body.type;
+	var newUserType = req.body.who;
 
 	
 
@@ -61,19 +61,26 @@ router.post('/creativewriter/newuser', function(req, res) {
         var errorMessage = error.message;
         // [START_EXCLUDE]
 
+
+
+			
         if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
+          console.log('The password is too weak.');
         } else {
-          alert(errorMessage);
+          console.log(errorMessage);
         }
         console.log(error);
         // [END_EXCLUDE]
       });
 
-// replace name from models into insertStudents
-	writer.insertUsers('users', ['name', 'email', 'password', 'type'], [newUserName, newUserEmail, newUserPassword, newUserType], function(data){
-		res.redirect('/studentview')
-	});
+
+			var colName = ['name', 'email', 'type'];
+			var colVal = [newUserName, newUserEmail, newUserType];
+
+			writer.insertInto('users', colName, colVal, function(data){
+			res.redirect('/studentview')
+				});
+
 
 });
 

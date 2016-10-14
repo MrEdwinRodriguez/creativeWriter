@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'sigma101',
-    database: 'createivewriter_DB'
+    database: 'creativewriter_db'
 })
 }
 

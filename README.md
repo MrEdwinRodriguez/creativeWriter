@@ -11,8 +11,8 @@ Once completed, our experienced mentors will provide you with constructive
 feedback to help you understand principles common to analytical writing, while
 preparing you for multi-genre projects that embrace academic thinking.
 
-*Writer's Block* is free to try for seven days, and only $100 a month on a
-subscription.
+*Writer's Block* is free to try for seven days, and only $100 a month after
+that.
 
 
 ![Image of Writer's Block logo]

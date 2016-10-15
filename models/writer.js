@@ -3,8 +3,8 @@ var orm = require ('../config/orm.js')
 
 var writer = {
 
-	selectComments: function(cb) {
-		orm.selectComments('comments', function(res){
+	select: function(cb) {
+		orm.all('users', function(res){
 			cb(res);
 		});
 	},
@@ -19,14 +19,10 @@ var writer = {
 		orm.create(table, col, val, cb);	
 	},
 
-	// insertSubmission: function(student, text, cb) {
-	// 	orm.create('submission', ['user_id', 'user_input'], [student, text], cb);	
-	// },
 
-	// insertComments: function(mentor, submission, comment, cb) {
-	// 	orm.create('comments', ['user_id', 'submission_id', 'comments'], [mentor, submission, comment], cb);	
-	// }	
 
 }
 
 module.exports = writer;
+
+	

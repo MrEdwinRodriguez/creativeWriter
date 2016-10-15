@@ -17,13 +17,9 @@ router.get('/', function(req,res) {
 		res.sendFile(path.join(__dirname,'../public/index.html'));
 });
 
-router.get('/mentorlogin', function(req,res) {
-		res.redirect('/admin')
-});
 
-router.get('/studentlogin', function(req,res) {
-		res.redirect('/login')
-});
+
+
 
 router.get('/newstudent', function(req,res) {
 		res.redirect('/signup')
@@ -82,14 +78,14 @@ router.post('/creativewriter/newuser', function(req, res) {
 });
 
 
-// user signin
-router.post('/creativewriter/signin', function(req, res) {
+// existing user signin
+router.post('/creativewriter/login', function(req, res) {
 	
 	console.log(req.body)
 	var newUserName = req.body.name;
 	var newUserEmail = req.body.email;
 	var newUserPassword = req.body.password;
-	var newUserType = req.body.who;
+	
 
 	
 
@@ -112,8 +108,8 @@ router.post('/creativewriter/signin', function(req, res) {
       });
 
 
-			var colName = ['name', 'email', 'type'];
-			var colVal = [newUserName, newUserEmail, newUserType];
+			var colName = ['name', 'email'];
+			var colVal = [newUserName, newUserEmail];
 
 			writer.insertInto('users', colName, colVal, function(data){
 			res.redirect('/studentview')
@@ -122,13 +118,15 @@ router.post('/creativewriter/signin', function(req, res) {
 
 });
 
+
+// existing mentor login
 router.post('/creativewriter/admin', function(req, res) {
 	
 	console.log(req.body)
-	var newUserName = req.body.name;
-	var newUserEmail = req.body.email;
+	var newUserName = 'test';
+	var newUserEmail = req.body.name;
 	var newUserPassword = req.body.password;
-	var newUserType = req.body.who;
+	var newUserType = 'mentor';
 
 	
 
@@ -138,8 +136,6 @@ router.post('/creativewriter/admin', function(req, res) {
         var errorMessage = error.message;
         // [START_EXCLUDE]
 
-
-
 			
         if (errorCode == 'auth/weak-password') {
           console.log('The password is too weak.');
@@ -147,9 +143,9 @@ router.post('/creativewriter/admin', function(req, res) {
           console.log(errorMessage);
         }
         console.log(error);
+
         // [END_EXCLUDE]
       });
-
 
 			var colName = ['name', 'email', 'type'];
 			var colVal = [newUserName, newUserEmail, newUserType];
@@ -157,13 +153,11 @@ router.post('/creativewriter/admin', function(req, res) {
 			writer.insertInto('users', colName, colVal, function(data){
 			res.redirect('/mentor')
 				});
-
-
 });
 
 
 
-// insert comments
+// student inserts paragraph
 router.post('/creativewriter/paragraph', function(req, res) {
 
 	var newUserName = 1;
@@ -183,83 +177,31 @@ router.post('/creativewriter/paragraph', function(req, res) {
 
 
 
-
-
-
-
-
-router.post('/creativewriter/studentview', function(req, res) {
-	//takes the request object using it as input for buger.addBurger
-	var newPost = req.body.newPost;
-
-// replace name from models into submission
-	writer.submission(['student_input'], [newPost], function(data){
-		res.redirect('/studentview')
-	});
-
-});
-
-
-router.post('/creativewriter/teacherview', function(req, res) {
-	//takes the request object using it as input for buger.addBurger
-	var newComment = req.body.comment;
-
-// replace name from models into submission
-	writer.comments(['comments_mentor_comment'], [newComment], function(data){
-		res.redirect('/teacherview')
-	});
-
-});
-
-// student selects comment from mentor to read
-router.get('/studentview', function(req,res) {
-	writer.selectComment(function(data){
-		var hbsObject = {writer : data}
-		console.log(hbsObject)
-		res.render('studentview/comments', hbsObject);
-
-	writer.selectComments('SELECT FROM comments', function(err, res) {
-    if (err) throw err;
-    console.log(res);
-})
-
-	});
-});
-
-
 // mentor selects student
-router.get('/teacherview/studentselect', function(req,res) {
-	writer.selectSubmission(function(data){
-		var hbsObject = {writer : data}
-		console.log(hbsObject)
-		res.render('teacherview/submission', hbsObject);
+router.get('/creativewriter/teacher', function(req,res) {
+console.log('hello')
+		writer.select(function(data){
+		//wrapper for orm.js that using MySQL query callback will return burger_data, render to index with handlebar
+		res.render('users', {name});
+		console.log(data)
+	});
 
-	writer.selectStudent('SELECT FROM user', function(err, res) {
-    if (err) throw err;
-    console.log(res);
-})
+	// writer.selectStudent('SELECT * FROM users where type s', function(err, res) {
+ //    if (err) throw err;
+ //    console.log(res);
+    });
 
+
+
+
+//mentor select submission
+router.get('/creativewriter/teacher', function(req,res) {
+console.log('hello')
+	writer.select(function(data){
+			
+		res.render('submission', {data});
 	});
 });
-
-
-
-// mentor selects writing from student
-router.get('/teacherview', function(req,res) {
-	writer.selectSubmission(function(data){
-		var hbsObject = {writer : data}
-		console.log(hbsObject)
-		res.render('teacherview/submission', hbsObject);
-
-	writer.selectSubmission('SELECT FROM submission', function(err, res) {
-    if (err) throw err;
-    console.log(res);
-})
-
-	});
-});
-
-
 
 
 module.exports = router;

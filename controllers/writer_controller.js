@@ -82,9 +82,10 @@ router.post('/creativewriter/newuser', function(req, res) {
 router.post('/creativewriter/login', function(req, res) {
 	
 	console.log(req.body)
-	var newUserName = req.body.name;
+	var newUserName = 'place holder';
 	var newUserEmail = req.body.email;
 	var newUserPassword = req.body.password;
+	var newUserType = 'student';
 	
 
 	
@@ -108,8 +109,8 @@ router.post('/creativewriter/login', function(req, res) {
       });
 
 
-			var colName = ['name', 'email'];
-			var colVal = [newUserName, newUserEmail];
+			var colName = ['name', 'email', 'type'];
+			var colVal = [newUserName, newUserEmail, newUserType];
 
 			writer.insertInto('users', colName, colVal, function(data){
 			res.redirect('/studentview')
@@ -123,7 +124,7 @@ router.post('/creativewriter/login', function(req, res) {
 router.post('/creativewriter/admin', function(req, res) {
 	
 	console.log(req.body)
-	var newUserName = 'test';
+	var newUserName = 'place holder';
 	var newUserEmail = req.body.name;
 	var newUserPassword = req.body.password;
 	var newUserType = 'mentor';

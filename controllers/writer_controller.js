@@ -173,24 +173,30 @@ router.post('/creativewriter/paragraph', function(req, res) {
 			res.redirect('/studentview')
 				});
 
-
 });
 
 
 
 // mentor selects student
-router.get('/creativewriter/teacher', function(req,res) {
-console.log('hello')
-		writer.select(function(data){
-		//wrapper for orm.js that using MySQL query callback will return burger_data, render to index with handlebar
-		res.render('users', {name});
-		console.log(data)
+// router.get('/creativewriter/mentor', function(req,res) {
+// console.log('hello')
+// 		writer.select(function(data){
+		
+// 		res.render('users', {data});
+// 		console.log(data)
+// 	});
+
+//   });
+
+router.get('/creativewriter/mentor', function(req,res) {
+
+	writer.select(function(data){
+		var hbsObject = {users : data}
+		console.log(hbsObject)
+		res.render('/creativewriter/mentor', hbsObject);
 	});
 
-	// writer.selectStudent('SELECT * FROM users where type s', function(err, res) {
- //    if (err) throw err;
- //    console.log(res);
-    });
+});
 
 
 

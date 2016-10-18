@@ -160,7 +160,6 @@ router.post('/creativewriter/admin', function(req, res) {
 
 // student inserts paragraph
 router.post('/creativewriter/paragraph', function(req, res) {
-
 	var newUserName = 1;
 	var newPost = req.body.newPost;
 	console.log(newPost)
@@ -178,25 +177,25 @@ router.post('/creativewriter/paragraph', function(req, res) {
 
 
 // mentor selects student
-// router.get('/creativewriter/mentor', function(req,res) {
-// console.log('hello')
-// 		writer.select(function(data){
+router.get('/mentor', function(req,res) {
+console.log('hello')
+		writer.select(function(data){
 		
-// 		res.render('users', {data});
-// 		console.log(data)
-// 	});
-
-//   });
-
-router.get('/creativewriter/mentor', function(req,res) {
-
-	writer.select(function(data){
-		var hbsObject = {users : data}
-		console.log(hbsObject)
-		res.render('/creativewriter/mentor', hbsObject);
+		res.render('users', {data});
+		console.log(data)
 	});
 
-});
+  });
+
+// router.get('/creativewriter/mentor', function(req,res) {
+// 	console.log('hello')
+// 	// writer.select(function(data){
+// 	// 	var hbsObject = {users : data}
+// 	// 	console.log(hbsObject)
+// 	// 	res.render('/creativewriter/mentor', hbsObject);
+// 	// });
+
+// });
 
 
 

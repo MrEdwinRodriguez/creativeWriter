@@ -25,8 +25,8 @@
 
     <div class="form-group">
         <label for="exampleSelect1"></label>
-        <select class="form-control" id="exampleSelect1">
-        <option>select your student</option>
+        <input class="form-control" id="exampleSelect1" />
+       
 
       </select>
     </div>
@@ -75,33 +75,16 @@
     <script src="assets/js/pomodoro-timer.js"></script>
 
     <script type="text/javascript">
-    console.log('hello')
-    // Every time you click on the button it pulls  
-    $('#catButton').on('click', function() {
-       
-        // After the click function it accesses api and searches for cats
-        var queryURL = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats";
-
-        // Going to the URL and getting the data; 
-        $.ajax({url: '/creativewriter/mentor', method: 'GET'})
-            console.log('hello world')
-            // When its finished getting the query. 
-            .done(function(response) {
-
-                // Setting the variable of image_url to the specific object 
-                var imageUrl = response.data.image_original_url;
-
-                // Created a variable called cat image
-                var catImage = $("<img>");
-                
-                // Given the catImage the source path and an alt tag (screen readers). 
-                catImage.attr('src', imageUrl);
-                catImage.attr('alt', 'cat image');
-
-                // Adding images before the content that's there 
-                $('#images').prepend(catImage);
-            });
+$('#exampleSelect1').on('click', function(e) {
+    var getSitesUrl = window.location.origin + "/creativewriter/getstudentlist";
+    $.getJSON(getSitesUrl, function(data) {
+        // TODO: notify if data.status is false
+        dataList.empty();
+        $.each(data, function(i, item) {
+            dataList.append($('<option>').val(item.name).attr('data-id', item.id));
+        });
     });
+});
     </script>
 
 

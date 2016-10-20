@@ -41,8 +41,9 @@ app.use(multer().any());
 // require('./routes/api-routes.js')(app);
 // require('.routes/html-routes.js')(app);
 var writer = require('./controllers/writer_controller');
+var creativewriter = require('./controllers/creativewriter')
 app.use('/', writer);
-
+app.use('/creativewriter', creativewriter);
 
 // ==============================================================================
 // LISTENER

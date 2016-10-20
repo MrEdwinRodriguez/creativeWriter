@@ -177,7 +177,7 @@ router.post('/creativewriter/paragraph', function(req, res) {
 
 
 // mentor selects student
-router.get('/mentor', function(req,res) {
+router.get('/creativewriter/mentor', function(req,res) {
 console.log('hello')
 		writer.select(function(data){
 		

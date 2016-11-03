@@ -9,7 +9,6 @@ var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkK
     storageBucket: "creativewriter-d899e.appspot.com",
     messagingSenderId: "1038064048502"});
 
-
 var newUserEmail;
 
 //get route -> index
@@ -176,16 +175,6 @@ router.post('/creativewriter/paragraph', function(req, res) {
 
 
 
-// mentor selects student
-router.get('/creativewriter/mentor', function(req,res) {
-console.log('hello')
-		writer.select(function(data){
-		
-		res.render('users', {data});
-		console.log(data)
-	});
-
-  });
 
 // router.get('/creativewriter/mentor', function(req,res) {
 // 	console.log('hello')

@@ -45,7 +45,7 @@ router.post('/creativewriter/newuser', function(req, res) {
 	var newUserPassword = req.body.password;
 	var newUserType = req.body.who;
 
-	
+console.log('line 48')	
 
 	 firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
         // Handle Errors here.
@@ -53,7 +53,7 @@ router.post('/creativewriter/newuser', function(req, res) {
         var errorMessage = error.message;
         // [START_EXCLUDE]
 
-
+console.log('line 56')
 
 			
         if (errorCode == 'auth/weak-password') {
@@ -89,7 +89,8 @@ router.post('/creativewriter/login', function(req, res) {
 
 	
 
-	 firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
+	 // firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
+	 firebase.auth().signInWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {	
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;

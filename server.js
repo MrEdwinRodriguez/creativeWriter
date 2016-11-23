@@ -1,23 +1,18 @@
 
-// ==============================================================================
-// DEPENDENCIES
-// Series of npm packages that we will use to give our server useful functionality
-// ==============================================================================
 
+// DEPENDENCIES
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var mysql = require('mysql');
-
 var multer = require('multer');
 
-// ==============================================================================
-/// This sets up the basic properties for our express server
-// ==============================================================================
 
-var app = express(); // Tells node that we are creating an "express" server
+//tells not to create express server
+var app = express(); 
 
-var PORT = process.env.PORT || 8080; // Sets an initial port. We'll use this later in our listener
+// sets initial port
+var PORT = process.env.PORT || 8080; 
 
 // BodyParser makes it easy for our server to interpret data sent to it.
 
@@ -51,7 +46,7 @@ app.use('/creativewriter', creativewriter);
 // ==============================================================================
 
 app.listen(PORT, function() {
-	console.log("This mothasucka is listening on PORT: " + PORT);
+	console.log("The server is listening: " + PORT);
 });
 
 

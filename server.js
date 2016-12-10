@@ -6,6 +6,9 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mysql = require('mysql');
 var multer = require('multer');
+var session = require('express-session');
+var FileStore = require('session-file-store')(session);
+var exphbs = require('express-handlebars');
 
 
 //tells not to create express server
@@ -25,6 +28,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use(multer().any());
+
+
+app.use(session({
+    name: 'sb',
+    secret: 'password',
+    resave: true,
+    saveUninitialized: true,
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+    httpOnly: true,
+    secure: true,
+    ephemeral: true,
+    store: new FileStore()
+}));
 
 
 // ================================================================================

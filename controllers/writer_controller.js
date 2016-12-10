@@ -3,6 +3,7 @@ var router = express.Router();
 var path = require('path');
 var writer = require('../models/writer.js');
 var firebase = require('firebase');
+var jwt = require('jsonwebtoken');
 var app = firebase.initializeApp({ apiKey: "AIzaSyDCLU0IiA8J_-bRcHwOdEK8qIIEqLkKf3s",
     authDomain: "creativewriter-d899e.firebaseapp.com",
     databaseURL: "https://creativewriter-d899e.firebaseio.com",
@@ -81,16 +82,16 @@ console.log('line 56')
 router.post('/creativewriter/login', function(req, res) {
 	
 	console.log(req.body)
-	var UserName = 'place holder';
-	var UserEmail = req.body.email;
-	var UserPassword = req.body.password;
-	var UserType = 'student';
+	var userName = 'place holder';
+	var userEmail = req.body.email;
+	var userPassword = req.body.password;
+	var userType = 'student';
 	
 
 	
 
 	 // firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
-	 firebase.auth().signInWithEmailAndPassword(UserEmail, UserPassword).catch(function(error) {	
+	 firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).catch(function(error) {	
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -108,7 +109,7 @@ router.post('/creativewriter/login', function(req, res) {
         // [END_EXCLUDE]
       });
 
-    if (userEmail) {
+    if (userEmail) 
         console.log('checking if')
         email = userEmail;
 
@@ -118,16 +119,18 @@ router.post('/creativewriter/login', function(req, res) {
         // var colVal = [newUserName, newUserEmail, newUserType];
         console.log('calling db')
 
-        rap.selectFrom('users', colName, colVal, function(user) {
+        writer.select('users', colName, colVal, function(user) {
             console.log(user)
 
             user = user[0];
+            console.log(user)
+            console.log('user name ' + user.name)
 
             req.session.user_id = user.id;
-            req.session.fb_user_id = user.uid;
-            req.session.first_name = user.firstname;
-            req.session.last_name = user.lastname;
-            req.session.user_email = user.email;
+            // req.session.fb_user_id = user.uid;
+            req.session.firstname = user.name;
+            // req.session.last_name = user.lastname;
+            // req.session.user_email = user.email;
 
             console.log(user.email);
             var token = jwt.sign({
@@ -149,7 +152,6 @@ router.post('/creativewriter/login', function(req, res) {
                     title: 'User Dashboard',
                     title_tag: 'manage your sites and devices',
                     user: user,
-                    audio: firstSong
 
                 });
 
@@ -159,7 +161,7 @@ router.post('/creativewriter/login', function(req, res) {
         });
 
 
-    };
+    });
 
 
 
@@ -174,7 +176,7 @@ router.post('/creativewriter/login', function(req, res) {
 //////////////////////////////			// 
 
 
-});
+// });
 
 
 // existing mentor login

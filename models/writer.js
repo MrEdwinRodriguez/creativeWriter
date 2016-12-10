@@ -3,8 +3,9 @@ var orm = require ('../config/orm.js')
 
 var writer = {
 
-	select: function(cb) {
-		orm.all('users', function(res){
+	// select: function(cb) {
+		select: function(table, col, val, cb) {
+		orm.all(table, function(res){
 			cb(res);
 		});
 	},

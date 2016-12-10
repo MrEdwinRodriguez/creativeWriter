@@ -81,16 +81,16 @@ console.log('line 56')
 router.post('/creativewriter/login', function(req, res) {
 	
 	console.log(req.body)
-	var newUserName = 'place holder';
-	var newUserEmail = req.body.email;
-	var newUserPassword = req.body.password;
-	var newUserType = 'student';
+	var UserName = 'place holder';
+	var UserEmail = req.body.email;
+	var UserPassword = req.body.password;
+	var UserType = 'student';
 	
 
 	
 
 	 // firebase.auth().createUserWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {
-	 firebase.auth().signInWithEmailAndPassword(newUserEmail, newUserPassword).catch(function(error) {	
+	 firebase.auth().signInWithEmailAndPassword(UserEmail, UserPassword).catch(function(error) {	
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -108,13 +108,70 @@ router.post('/creativewriter/login', function(req, res) {
         // [END_EXCLUDE]
       });
 
+    if (userEmail) {
+        console.log('checking if')
+        email = userEmail;
 
-			var colName = ['name', 'email', 'type'];
-			var colVal = [newUserName, newUserEmail, newUserType];
+        // console.log(uid)
+        var colName = ['email'];
+        var colVal = [email];
+        // var colVal = [newUserName, newUserEmail, newUserType];
+        console.log('calling db')
 
-			writer.insertInto('users', colName, colVal, function(data){
-			res.redirect('/studentview')
-				});
+        rap.selectFrom('users', colName, colVal, function(user) {
+            console.log(user)
+
+            user = user[0];
+
+            req.session.user_id = user.id;
+            req.session.fb_user_id = user.uid;
+            req.session.first_name = user.firstname;
+            req.session.last_name = user.lastname;
+            req.session.user_email = user.email;
+
+            console.log(user.email);
+            var token = jwt.sign({
+                password_hash: user.password_hash
+            }, 'password', {
+                expiresIn: 60 * 60 * 15
+            })
+
+            console.log("Token")
+            console.log(token)
+
+            console.log(user)
+            console.log(user.id)
+
+            // pulls audio from user while they loging
+
+                res.render('studentview/', {
+
+                    title: 'User Dashboard',
+                    title_tag: 'manage your sites and devices',
+                    user: user,
+                    audio: firstSong
+
+                });
+
+        
+
+
+        });
+
+
+    };
+
+
+
+
+// ///////////////////////old code below
+			// var colName = ['name', 'email', 'type'];
+			// var colVal = [newUserName, newUserEmail, newUserType];
+
+			// writer.insertInto('users', colName, colVal, function(data){
+			// res.redirect('/studentview')
+			// 	});
+//////////////////////////////			// 
 
 
 });

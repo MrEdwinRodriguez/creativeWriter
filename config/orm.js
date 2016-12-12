@@ -19,6 +19,16 @@ var orm = {
             cb(result);
         });
     },
+
+    user: function(tableInput, col, val, cb) {
+        var queryString = 'SELECT * FROM ' + tableInput + ' WHERE ' + col + ' = "' + val +'";';
+        console.log(queryString)
+        connection.query(queryString, function(err, result) {
+            if (err) throw err;
+            cb(result);
+        });
+    },
+
     //vals is an array of values that we want to save to cols
     //cols are the columns we want to insert the values into
     create: function(table, cols, vals, cb) {

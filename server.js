@@ -22,12 +22,28 @@ var PORT = process.env.PORT || 8080;
 
 app.use(express.static(process.cwd() + '/public'));
 
+// this sets folder where views will live
+app.set('views', path.join(__dirname, 'views'));
+
+// established views engine and allows to use .html instead of .handlebars
+app.engine('html', exphbs({
+    defaultLayout: 'main',
+    extname: '.html'
+}));
+app.set('view engine', 'html');
+
+
+
 // The code below is pretty standard.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use(multer().any());
+
+// Sets JSON Web Token Secret for Encryption
+app.set('jwtSecret', "password2");
+
 
 
 app.use(session({

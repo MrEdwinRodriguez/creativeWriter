@@ -25,13 +25,26 @@ router.get('/newstudent', function(req,res) {
 		res.redirect('/signup')
 });
 
-router.get('/studentview', function(req,res) {
-		res.sendFile(path.join(__dirname,'../public/paragraph.html'));
-});
+// router.get('/studentview', function(req,res) {
+// 		res.sendFile(path.join(__dirname,'../public/paragraph.html'));
+// });
 
 router.get('/mentor', function(req,res) {
 		res.sendFile(path.join(__dirname,'../public/teacher.html'));
 });
+
+router.get("/studentview", function(req, res) {
+    // res.sendfile(__dirname + "../public/signup.html");
+    res.sendFile(path.join(__dirname, '../views/paragraph.html'));
+});
+
+// router.get("/studentview", function(req, res) {
+//     // res.sendfile(__dirname + "../public/signup.html");
+//     res.sendFile(path.join(__dirname, '../public/paragraph.html'));
+// });
+// router.get('/studentview', function(req, res) {
+//     res.sendFile(path.join(__dirname, '../views/studentview/paragraph.html'));
+// });
 
 
 
@@ -209,7 +222,7 @@ router.post('/creativewriter/admin', function(req, res) {
 
 			var colName = ['name', 'email', 'type'];
 			var colVal = [newUserName, newUserEmail, newUserType];
-
+			console.log(colVal)
 			writer.insertInto('users', colName, colVal, function(data){
 			res.redirect('/mentor')
 				});
@@ -232,19 +245,6 @@ router.post('/creativewriter/paragraph', function(req, res) {
 				});
 
 });
-
-
-
-
-// router.get('/creativewriter/mentor', function(req,res) {
-// 	console.log('hello')
-// 	// writer.select(function(data){
-// 	// 	var hbsObject = {users : data}
-// 	// 	console.log(hbsObject)
-// 	// 	res.render('/creativewriter/mentor', hbsObject);
-// 	// });
-
-// });
 
 
 
